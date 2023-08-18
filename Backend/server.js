@@ -3,8 +3,9 @@ const express = require("express");
 const connectDB = require("./db/connection");
 const cors = require("cors");
 
+// Importing Routes
 const userRouter = require("./api/routes/userRoutes");
-
+const planetRouter = require("./api/routes/planetRautes");
 const app = express();
 
 app.use(
@@ -19,7 +20,9 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Define Routes
 app.use("/api/users", userRouter);
+app.use("/api/planets", planetRouter);
 
 // Define port variable
 const port = process.env.PORT || 8080;
