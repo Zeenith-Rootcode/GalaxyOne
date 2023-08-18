@@ -3,9 +3,13 @@ const express = require("express");
 const connectDB = require("./db/connection");
 const cors = require("cors");
 
+connectDB();
+
 // Importing Routes
 const userRouter = require("./api/routes/userRoutes");
 const planetRouter = require("./api/routes/planetRautes");
+const packageRouter = require("./api/routes/packagesRoutes");
+
 const app = express();
 
 app.use(
@@ -16,13 +20,13 @@ app.use(
   })
 );
 
-connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Define Routes
 app.use("/api/users", userRouter);
 app.use("/api/planets", planetRouter);
+app.use("/api/packages", packageRouter);
 
 // Define port variable
 const port = process.env.PORT || 8080;

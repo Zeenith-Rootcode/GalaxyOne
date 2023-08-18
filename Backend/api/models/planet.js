@@ -16,7 +16,7 @@ const planetsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  attractionDescription: {
+  attractionsDescription: {
     type: String,
     required: true,
   },
@@ -26,6 +26,14 @@ const planetsSchema = new mongoose.Schema({
   },
   planetImage: {
     type: String,
+    required: true,
+  },
+  distanceFromPlanet: {
+    type: Number,
+    required: true,
+  },
+  availablePackages: {
+    type: Array,
     required: true,
   },
 });

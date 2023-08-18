@@ -3,7 +3,7 @@ const request = require("request-promise");
 const Planet = require("../models/planet");
 
 // *******************************************************************************
-// ****************************** To get a planet ********************************
+// ****************************** To get planets *********************************
 // *******************************************************************************
 
 exports.getPlanets = async (req, res) => {
@@ -12,6 +12,7 @@ exports.getPlanets = async (req, res) => {
       res.json({
         Error: false,
         Status: 200,
+        Message: "Getting planets was succeeded",
         Planets: planets,
       });
     })
@@ -19,7 +20,12 @@ exports.getPlanets = async (req, res) => {
       res.json({
         Error: true,
         Status: 400,
+        Message: "Getting planets was failed",
         Error: error,
       });
     });
 };
+
+// *******************************************************************************
+// ****************************** To add planets *********************************
+// *******************************************************************************
