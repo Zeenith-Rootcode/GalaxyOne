@@ -9,6 +9,7 @@ connectDB();
 const userRouter = require("./api/routes/userRoutes");
 const planetRouter = require("./api/routes/planetRautes");
 const packageRouter = require("./api/routes/packagesRoutes");
+const ticketsRouter = require("./api/routes/ticketsRoutes");
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", userRouter);
 app.use("/api/planets", planetRouter);
 app.use("/api/packages", packageRouter);
+app.use("/api/tickets", ticketsRouter);
 
 // Define port variable
 const port = process.env.PORT || 8080;

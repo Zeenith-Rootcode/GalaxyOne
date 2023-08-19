@@ -1,12 +1,19 @@
 const mongoose = require("mongoose");
-const Packages = require("./package");
 
 const ticketSchema = new mongoose.Schema({
   package: {
-    type: Packages,
+    type: String,
+    required: true,
+  },
+  packageName: {
+    type: String,
     required: true,
   },
   startingPlanet: {
+    type: String,
+    required: true,
+  },
+  startingPlanetName: {
     type: String,
     required: true,
   },
@@ -14,12 +21,24 @@ const ticketSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  destinationPlanetName: {
+    type: String,
+    required: true,
+  },
   departureDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   arrivalDate: {
-    type: Date,
+    type: String,
+    required: true,
+  },
+  availableNumberOfTickets: {
+    type: Number,
+    required: true,
+  },
+  journeyDistance: {
+    type: Number,
     required: true,
   },
   price: {
