@@ -36,6 +36,11 @@ const planetsSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
+  reviewScore: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
 });
 
 module.exports = mongoose.model("Planets", planetsSchema);
