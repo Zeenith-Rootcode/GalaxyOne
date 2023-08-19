@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
-const Packages = require("./package");
 
 const ticketSchema = new mongoose.Schema({
   package: {
-    type: Packages,
+    type: String,
     required: true,
   },
   startingPlanet: {
@@ -20,6 +19,14 @@ const ticketSchema = new mongoose.Schema({
   },
   arrivalDate: {
     type: Date,
+    required: true,
+  },
+  availableNumberOfTickets: {
+    type: Number,
+    required: true,
+  },
+  journeyDistance: {
+    type: Number,
     required: true,
   },
   price: {
