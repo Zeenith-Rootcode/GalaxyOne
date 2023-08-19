@@ -5,7 +5,15 @@ const ticketSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  packageName: {
+    type: String,
+    required: true,
+  },
   startingPlanet: {
+    type: String,
+    required: true,
+  },
+  startingPlanetName: {
     type: String,
     required: true,
   },
@@ -13,12 +21,16 @@ const ticketSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  destinationPlanetName: {
+    type: String,
+    required: true,
+  },
   departureDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   arrivalDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   availableNumberOfTickets: {
