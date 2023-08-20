@@ -63,7 +63,7 @@ export async function getRecentPlanets(userId: string) {
     response = await fetch(BASEURL+"/api/bookings/getRecentPlanetsOfUser", {
       method: "POST",
       body: JSON.stringify({
-        "user":"64defd1207759034c8a976f3"
+        "user":userId
       }),
       headers: {
         "Content-Type": "application/json",
