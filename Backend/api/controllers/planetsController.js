@@ -27,6 +27,32 @@ exports.getPlanets = async (req, res) => {
 };
 
 // *******************************************************************************
+// *********************** To get  popular planets *******************************
+// *******************************************************************************
+
+exports.getPopularPlanets = async (req, res) => {
+  Planet.find()
+    .sort({ reviewScore: -1 })
+    .limit(10)
+    .then((planets) => {
+      res.json({
+        Error: false,
+        Status: 200,
+        Message: "Getting popular planets was succeeded",
+        Planets: planets,
+      });
+    })
+    .catch((error) => {
+      res.json({
+        Error: true,
+        Status: 400,
+        Message: "Getting popular planets was failed",
+        Error: error,
+      });
+    });
+};
+
+// *******************************************************************************
 // ****************************** To add planets *********************************
 // ******************************************************************************
 exports.addPlanet = async (req, res) => {

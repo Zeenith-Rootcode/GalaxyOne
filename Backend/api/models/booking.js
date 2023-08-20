@@ -1,46 +1,42 @@
 const mongoose = require("mongoose");
-const planetsSchema = new mongoose.Schema({
-  name: {
+
+const bookingsSchema = new mongoose.Schema({
+  user: {
     type: String,
     required: true,
   },
-  climate: {
+  ticket: {
     type: String,
     required: true,
   },
-  attractions: {
+  issuedDate: {
     type: String,
     required: true,
   },
-  culture: {
+  destination: {
     type: String,
     required: true,
   },
-  attractionsDescription: {
+  startingPlanet: {
     type: String,
     required: true,
   },
-  cultureDescription: {
+  departureDate: {
     type: String,
     required: true,
   },
-  planetImage: {
-    type: String,
-    required: true,
-  },
-  distanceFromPlanet: {
+  numberOfTickets: {
     type: Number,
     required: true,
   },
-  availablePackages: {
-    type: Array,
-    required: true,
-  },
-  reviewScore: {
+  price: {
     type: Number,
     required: true,
-    default: 0,
+  },
+  status: {
+    type: String,
+    required: true,
   },
 });
 
-module.exports = mongoose.model("Planets", planetsSchema);
+module.exports = mongoose.model("Bookings", bookingsSchema);

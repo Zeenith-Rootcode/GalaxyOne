@@ -1,6 +1,10 @@
 const multer = require("multer");
 const router = require("express").Router();
-const { getPlanets, addPlanet } = require("../controllers/planetsController");
+const {
+  getPlanets,
+  addPlanet,
+  getPopularPlanets,
+} = require("../controllers/planetsController");
 
 // Configure Multer for file uploads
 const storage = multer.diskStorage({
@@ -15,6 +19,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.get("/getPlanetsDetails", getPlanets);
+router.get("/getPopularPlanets", getPopularPlanets);
 router.post("/addPlanet", upload.single("planetImage"), addPlanet);
 
 module.exports = router;
