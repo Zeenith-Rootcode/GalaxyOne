@@ -24,7 +24,7 @@ export interface user {
   password?: string;
 }
 
-export interface userRegisterResponse {
+export interface userResponse {
   Error: string;
   Status: string;
   Message: string;
@@ -34,4 +34,11 @@ export interface userRegisterResponse {
 export enum loginType {
   NORMAL = "NORMAL",
   GOOGLE = "GOOGLE",
+}
+
+export interface userLogin {
+  googleId?: string;
+  loginType: loginType;
+  universalId?: string;
+  password?: string;
 }

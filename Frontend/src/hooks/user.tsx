@@ -1,11 +1,20 @@
-import { registerNormalUser } from "../api/user";
-import { userRegister } from "../types";
+import { loginUser, registerUser } from "../api/user";
+import { userLogin, userRegister } from "../types";
 
-export async function RegisterNormalUser(user: userRegister) {
+export async function RegisterUser(user: userRegister) {
   try {
-    const response = await registerNormalUser(user);
+    const response = await registerUser(user);
     console.log("Response:", response);
   } catch (error) {
-    console.error("An error occurred in registering user Google:", error);
+    console.error("An error occurred in registering normal user:", error);
+  }
+}
+
+export async function LoginUser(user: userLogin) {
+  try {
+    const response = await loginUser(user);
+    console.log("Response:", response);
+  } catch (error) {
+    console.error("An error occurred in registering Google user:", error);
   }
 }

@@ -1,19 +1,47 @@
 import React from "react";
 import "./Stack.css"; // Import your CSS file for styling
-import { RegisterNormalUser } from "./hooks/user";
-import { loginType } from "./types";
+import { LoginUser, RegisterUser } from "./hooks/user";
+import { loginType, userLogin, userRegister } from "./types";
 
-const handleNormalUserRegister = () => {
-  RegisterNormalUser({
-    fullName: "Chanuka Abeysinghe",
-    loginType: loginType.NORMAL,
-    universalId: "100012V",
-    universalTel: "343432143124",
-    homePlanet: "Mars",
-    homeDestrict: "Venace234",
-    race: "Alient",
-    password: "1234",
-  });
+let testNormalRegister: userRegister = {
+  fullName: "Chanuka Abeysinghe",
+  loginType: loginType.NORMAL,
+  universalId: "100012V",
+  universalTel: "343432143124",
+  homePlanet: "Mars",
+  homeDestrict: "Venace234",
+  race: "Alient",
+  password: "1234",
+};
+
+let testGoogleRegister: userRegister = {
+  fullName: "Chanuka Abeysinghe",
+  loginType: loginType.GOOGLE,
+  universalId: "100012V",
+  googleId: "34324123",
+  universalTel: "343432143124",
+  homePlanet: "Mars",
+  homeDestrict: "Venace234",
+  race: "Alient",
+};
+
+const handleUserRegister = (user: userRegister) => {
+  RegisterUser(user);
+};
+
+let testNormalLogin: userLogin = {
+  loginType: loginType.NORMAL,
+  universalId: "100012V",
+  password: "1234",
+};
+
+let testGoogleLogin: userLogin = {
+  loginType: loginType.GOOGLE,
+  googleId: "34324123",
+};
+
+const handleUserLogin = (user: userLogin) => {
+  LoginUser(user);
 };
 
 const Stack: React.FC = () => {
@@ -30,9 +58,30 @@ const Stack: React.FC = () => {
           <button
             type="submit"
             className="btn btn-secondary"
-            onClick={handleNormalUserRegister}
+            onClick={() => handleUserRegister(testNormalRegister)}
           >
             RegisterNormalUser
+          </button>
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => handleUserRegister(testGoogleRegister)}
+          >
+            RegisterGoogleUser
+          </button>
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => handleUserLogin(testNormalLogin)}
+          >
+            Login Normal User
+          </button>
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => handleUserLogin(testGoogleLogin)}
+          >
+            Login Google User
           </button>
         </div>
         <div className="component" style={{ margin: "20px" }}>
