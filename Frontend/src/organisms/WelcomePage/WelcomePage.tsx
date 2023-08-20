@@ -19,7 +19,7 @@ const centerStyle: React.CSSProperties = {
   const WelcomePage: React.FC = () => {
     return (
       <div style={centerStyle}>
-        <Image {...imageProvider('https://picsum.photos/2000/2000?random=1')} />
+        <Image {...imageProvider(process.env.PUBLIC_URL + '/images/Welcome_Page.png')} />
         <Paragraph {...textSize(20, "Your Gateway to Cosmos")}/>
         <Paragraph {...textSize(10, "The Intergalactic organization Welcomes You to The GalaxyOne")}/>
         <Button {...exampleButtonProps} text="Let's Go-oo.." />

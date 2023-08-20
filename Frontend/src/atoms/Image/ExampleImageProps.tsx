@@ -6,16 +6,18 @@ import { ImageProps } from './ImageProps';
 const backgroundImageStyle: React.CSSProperties = {
   position: 'absolute',
   zIndex: -1,
-  top: 0,
-  left: 0,
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)', // Center the image
   width: '100%',
-  height: '100%',
+  maxWidth: '15%',    // Set the maximum width
+  height: 'auto',     // Let the height adjust proportionally
 };
 
 // HomePage related
 export function imageProvider(address: string){
   const image: ImageProps = {
-    src: address, //Home Page image  'https://picsum.photos/300/300?random=1'
+    src: process.env.PUBLIC_URL + address, //Home Page image  'https://picsum.photos/300/300?random=1' 
     alt: 'Example Image',
     // width: 400,
     // height: 300,
