@@ -270,6 +270,22 @@ exports.getBookingsOfUser = async (req, res) => {
 // *******************************************************************************
 // ******************** To get recent planets of user ****************************
 // *******************************************************************************
+function getPackageDetails(package) {
+  return new Promise((resolve, reject) => {
+    Packages.findById(package)
+      .then((packageFromDB) => {
+        resolve(packageFromDB);
+      })
+      .catch((error) => {
+        res.json({
+          Error: true,
+          Status: 400,
+          Message: "Getting recent planets of the user was unsuccessful",
+          Error: error,
+        });
+      });
+  });
+}
 
 function getPlanetDetails(singleBookingFromDB) {
   return new Promise((resolve, reject) => {
@@ -277,7 +293,26 @@ function getPlanetDetails(singleBookingFromDB) {
       .then((ticketFromDB) => {
         Planets.findById(ticketFromDB.destinationPlanet)
           .then((planetFromDB) => {
-            resolve(planetFromDB);
+            Promise.all(
+              planetFromDB.availablePackages.map((package) => {
+                return getPackageDetails(package);
+              })
+            )
+              .then((packagesList) => {
+                resolve({
+                  planet: planetFromDB,
+                  availablePackages: packagesList,
+                });
+              })
+              .catch((error) => {
+                res.json({
+                  Error: true,
+                  Status: 400,
+                  Message:
+                    "Getting recent planets of the user was unsuccessful : " +
+                    error.message,
+                });
+              });
           })
           .catch((error) => {
             res.json({
