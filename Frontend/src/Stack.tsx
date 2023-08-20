@@ -6,6 +6,8 @@ import { AddPlanet, GetPlanets, GetPopularPlanets, GetRecentPlanets } from "./ho
 import { Planet, PlanetUpload } from "./types/planetTypes";
 import {FilterTickets} from "./hooks/tickets";
 import {ticketFilterAttributes, Ticket} from "./types/ticketTypes";
+import { addBookingRequest, getBookingsOfUserRequest, payForBookingRequest } from "./types/bookingTypes";
+import { AddBooking, GettingBookingsOfUser, PayForBooking } from "./hooks/bookings";
 
 let testNormalRegister: userRegister = {
   fullName: "Chanuka Abeysinghe",
@@ -116,6 +118,38 @@ const handleFilterTickets = (filterAttributes:ticketFilterAttributes) => {
   FilterTickets(filterAttributes);
 };
 
+let testAddBooking: addBookingRequest = {
+  user:"64defd1207759034c8a976f3",
+  ticket:"64e096d7628f3744779aacb1",
+  numberOfTickets:1
+}
+
+let testPayForBooking : payForBookingRequest = {
+  user:"64defd1207759034c8a976f3",
+  booking:"64e18b24445c6ddf75523e44",
+  cardNumber:"4314132413453453415",
+  nameOnCard:"Chanuka Abeysinghe",
+  cvc:"344",
+  expDate:"04/25"
+}
+
+let testGetBookings : getBookingsOfUserRequest = {
+  user:"64defd1207759034c8a976f3"
+}
+
+const handleAddingBooking = (request:addBookingRequest) => {
+  AddBooking(request);
+};
+
+const handlePayForBooking = (request:payForBookingRequest) => {
+  PayForBooking(request);
+};
+
+const handleGettingBookings = (request:getBookingsOfUserRequest) => {
+  GettingBookingsOfUser(request);
+};
+
+
 
 const Stack: React.FC = () => {
   return (
@@ -177,13 +211,13 @@ const Stack: React.FC = () => {
           >
             Get Recent Planets
           </button>
-          <button
+          {/* <button
             type="submit"
             className="btn btn-secondary"
             onClick={() => handleAddPlanet(testAddPlanet)}
           >
             Add Planet
-          </button>
+          </button> */}
         </div>
 
         <div className="component" style={{ margin: "20px" }}>
@@ -195,6 +229,32 @@ const Stack: React.FC = () => {
             onClick={() => handleFilterTickets(testFilterTickets)}
           >
             Filter Tickets
+          </button>
+        </div>
+
+        <div className="component" style={{ margin: "20px" }}>
+          <h2>Bookings</h2>
+          {/*dont wrap api call button with a form element*/}
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => handleAddingBooking(testAddBooking)}
+          >
+            Add Booking
+          </button>
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => handlePayForBooking(testPayForBooking)}
+          >
+           Pay For Booking
+          </button>
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => handleGettingBookings(testGetBookings)}
+          >
+            Get Bookings of User
           </button>
         </div>
       </div>
