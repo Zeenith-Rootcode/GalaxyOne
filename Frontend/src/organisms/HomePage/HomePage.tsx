@@ -5,6 +5,7 @@ import Paragraph from '../../atoms/Paragraph/Paragraph';
 import {textSize} from '../../atoms/Paragraph/ExampleParagraphProps';
 import Button from '../../atoms/Button/Button';
 import { exampleButtonProps } from '../../atoms/Button/ExampleButtonProps';
+import HomePageBG from '../../assets/images/Home_Page.png';
 
 const centerStyle: React.CSSProperties = {
     display: 'flex',
@@ -19,7 +20,7 @@ const centerStyle: React.CSSProperties = {
   const HomePage: React.FC = () => {
     return (
       <div style={centerStyle}>
-        <Image {...imageProvider(process.env.PUBLIC_URL + '/images/Home_Page.png')} />
+        <Image {...imageProvider(HomePageBG)}/>
         <Paragraph {...textSize(20, "GalaxyOne")}/>
         <Paragraph {...textSize(10, "Your Portal to the Cosmos")}/>
         <Button {...exampleButtonProps} text="Go Now" />
