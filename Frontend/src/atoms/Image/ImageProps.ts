@@ -7,5 +7,5 @@ export class ImageProps {
     className?: string = '';
     style?: React.CSSProperties = {};
     decoding?: 'async' | 'sync' | 'auto' = 'auto';
-  }
+}
   

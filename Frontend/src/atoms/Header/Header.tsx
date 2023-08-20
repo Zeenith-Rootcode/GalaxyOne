@@ -1,25 +1,39 @@
 import React from 'react';
-import { HeaderProps } from './HeaderProps';
+
+type HeadingLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+type Color = 'black' | 'white';
+
+interface HeaderProps {
+  level: HeadingLevel;
+  id?: string;
+  className?: string;
+  title?: string;
+  children?: React.ReactNode;
+  text?: string;
+  wide?: boolean;
+  color?: Color;
+}
 
 const Header: React.FC<HeaderProps> = ({
-  level,
+  level = 6,
   id,
   className = '',
-  style,
   title,
-  children,
+  wide = false,
+  text = '',
+  color = 'black',
 }) => {
-  const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
-
   return (
-    <HeadingTag
+    <div
       id={id}
-      className={`header ${className}`}
-      style={style}
+      className={
+        `text-shadow text-center font-bold text-${color} text-${level}xl` +
+        (wide ? ' tracking-wider' : '')
+      }
       title={title}
     >
-      {children}
-    </HeadingTag>
+      {text}
+    </div>
   );
 };
 
