@@ -1,83 +1,63 @@
-// import React from 'react';
-// import Button from './atoms/Button/Button'; // Update the path as needed
-// import { exampleButtonProps1, exampleButtonProps2, exampleButtonProps3 } from './atoms/Button/ExampleButtonProps'; // Update the path as needed
+import React from "react";
 
-// import Header from './atoms/Header/Header'; // Update the path as needed
-// import {exampleHeaderProps1, exampleHeaderProps2, exampleHeaderProps3} from './atoms/Header/ExampleHeaderProps'; // Update the path as needed
+import QRCode from "./assets/QR Code.svg";
+import Socket from "./assets/Socket.svg";
+import StarRating from "./assets/Star Rings.svg";
+import Button from "./atoms/Button/Button";
+import TextField from "./atoms/TextField/TextField";
+import ButtonHolder from "./modules/Layouts/ButtonLayout";
+import TextHolder from "./modules/Layouts/TextLayout";
+import SearchBox from "./atoms/SearchBox/SearchBox";
+import List from "./atoms/List/List";
+import ParentComponent from "./modules/PlanetCard/PlanetCard";
+import MyComponent from "./modules/Layouts/PlantCardLayout";
 
-// import Paragraph from './atoms/Paragraph/Paragraph'; // Update the path as needed
-// import {exampleParagraphProps1, exampleParagraphProps2, exampleParagraphProps3, exampleParagraphProps4 } from './atoms/Paragraph/ExampleParagraphProps'; // Update the path as needed
-
-// import Image from './atoms/Image/Image'; // Update the path as needed
-// import {exampleImageProps1, exampleImageProps2, exampleImageProps3 } from './atoms/Image/ExampleImageProps'; // Update the path as needed
-
-// import TextField from './atoms/TextField/TextField'; // Update the path as needed
-// import {exampleTextFieldProps1, exampleTextFieldProps2, exampleTextFieldProps3} from './atoms/TextField/ExampleTextFieldProps'; // Update the path as needed
-
-// import SearchBox from './atoms/SearchBox/SearchBox'; // Update the path as needed
-// import {exampleSearchBoxProps} from './atoms/SearchBox/ExampleSearchBoxProps'; // Update the path as needed
-
-// import List from './atoms/List/List'; // Update the path as needed
-// import {exampleListProps} from './atoms/List/ExampleListProps'; // Update the path as needed
-
-// import Card from './atoms/Card/Card'; // Update the path as needed
-// import {exampleCardProps} from './atoms/Card/ExampleCardProps'; // Update the path as needed
-
-// // App.tsx
-// // import React from 'react';
-// import GridGenerator from './GridGen';
-// import planet_names from './data';
-// import './App.css'; // Import the CSS file for styling
-
-// function App() {
-//   return (
-//     <div className="App">
-//       {/* <Button {...exampleButtonProps1} /> */}
-//       {/* <Button {...exampleButtonProps2} /> */}
-//       {/* <Button {...exampleButtonProps3} /> */}
-//       {/* <Header {...exampleHeaderProps1} /> */}
-//       {/* <Header {...exampleHeaderProps2} /> */}
-//       {/* <Header {...exampleHeaderProps3} /> */}
-//       {/* <Paragraph {...exampleParagraphProps1} /> */}
-//       {/* <Paragraph {...exampleParagraphProps2} /> */}
-//       {/* <Paragraph {...exampleParagraphProps3} /> */}
-//       {/* <Paragraph {...exampleParagraphProps4} /> */}
-//       {/* <Image {...exampleImageProps1} /> */} 
-//       {/* <Image {...exampleImageProps2} /> */}
-//       {/* <Image {...exampleImageProps3} /> */}
-//       {/* <TextField {...exampleTextFieldProps1} /> */}
-//       {/* <TextField {...exampleTextFieldProps2} /> */}
-//       {/* <TextField {...exampleTextFieldProps3} /> */}
-//       {/* <SearchBox {...exampleSearchBoxProps} /> */}
-//       {/* <List {...exampleListProps} /> */}
-//       {/* <Card {...exampleCardProps} /> */}
-//       <GridGenerator planetNames={planet_names} />
-
-//     </div>
-//   );
-// }
+// Sample data
+const dataList = [
+  { id: 1, title: "Vertika", text: "Tropical climate Nature-centric EcoTech Industries", img_url: "PlanetAqualis.svg" },
+  { id: 2, title: "Aqualis", text: "Tropical climate Nature-centric EcoTech Industries", img_url: "PlanetEarth.svg" },
+  { id: 3, title: "Titanis", text: "Tropical climate Nature-centric EcoTech Industries", img_url: "PlanetTitains.svg" },
+];
 
 
-
-// export default App;
-
-
-
-import React from 'react';
-import Stack from './Stack';
-import HomePage from './organisms/HomePage/HomePage';
-import WelcomePage from './organisms/WelcomePage/WelcomePage';
-import SignIn from './organisms/SignInPage/SignIn';
-
-const App: React.FC = () => {
+export default function App() {
+  // const text = 'Click Me';
+  // const className = 'custom-button';
   return (
-    <div className="App">
-      {/* <Stack /> */}
-      {/* <HomePage/> */}
-      {/* <WelcomePage/> */}
-      <SignIn/>
+    <div>
+      <ButtonHolder pb={7} pt={7}>
+        <Button className={"custom-button"} icon={<img src={Socket} alt={""} />} />
+        <Button className={"custom-button"} icon={<img src={QRCode} alt={""} />} />
+        <Button className={"custom-button"} icon={<img src={StarRating} alt={""} />} />
+      </ButtonHolder>
+      <ButtonHolder pt={3}>
+        <Button text={"Sign In"} className={"custom-button"} />
+      </ButtonHolder>
+      <TextHolder>
+        <TextField type={"text"} placeholder={"Enter your email"} />
+        <TextField type={"text"} placeholder={"Enter your email"} />
+      </TextHolder>
+      <SearchBox type={"text"} placeholder={"Enter your email"} />
+      {/*<div className={"py-40"}>*/}
+      {/*  <ParentComponent />*/}
+      {/*</div>*/}
+
+
+      <div className="container mx-auto p-4">
+        <MyComponent dataList={dataList} />
+      </div>
+
+      <div className="">
+        <div className="w-40 h-48 absolute">
+          <div className="w-40 h-48 left-0 top-0 absolute bg-orange-400 rounded-2xl shadow" />
+          <div className="Titanis w-28 h-8 left-[29px] top-[71px] absolute text-white text-3xl font-bold">Titanis</div>
+          <div
+            className="RedStoneMountainsResilientAndDaringMiningIndustries w-36 h-16 left-[8px] top-[107px] absolute text-white text-base font-normal leading-tight tracking-tight">Red
+            Stone Mountains<br />Resilient and daring<br />Mining Industries
+          </div>
+          <div className="Planet00 w-28 h-28 left-[-15px] top-[-43px] absolute shadow" />
+        </div>
+      </div>
     </div>
   );
 }
-
-export default App;

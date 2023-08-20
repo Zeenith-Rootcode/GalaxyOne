@@ -1,16 +1,16 @@
-import React from 'react';
-import { ImageProps } from './ImageProps';
+import React from "react";
+import { ImageProps } from "./ImageProps";
 
 const Image: React.FC<ImageProps> = ({
-  src,
-  alt,
-  width,
-  height,
-  title,
-  className = '',
-  style,
-  decoding = 'auto',
-}) => {
+                                       src,
+                                       alt,
+                                       width,
+                                       height,
+                                       title,
+                                       className = "",
+                                       style,
+                                       decoding = "auto"
+                                     }) => {
   return (
     <img
       src={src}

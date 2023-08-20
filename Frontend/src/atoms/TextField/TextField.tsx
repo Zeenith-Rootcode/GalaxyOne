@@ -1,46 +1,41 @@
 import React from 'react';
-import { TextFieldProps } from './TextFieldProps';
 
 const TextField: React.FC<TextFieldProps> = ({
-  type,
+  type = 'text',
   id,
   name,
   value,
   placeholder,
-  maxlength,
+  maxLength,
   size,
-  disabled,
-  readonly,
-  autocomplete,
-  autofocus,
+  disabled = false,
+  readOnly = false,
+  autoComplete = 'on',
   required,
   pattern,
   min,
   max,
   step,
-  class: className = '',
-  style,
+  className = '',
 }) => {
   return (
     <input
+      className={`text-field text-zinc-700 text-opacity-60 text-xl w-full h-12 rounded-2xl justify-center px-4 ${className}`}
       type={type}
       id={id}
       name={name}
       value={value}
       placeholder={placeholder}
-      maxLength={maxlength}
+      maxLength={maxLength}
       size={size}
       disabled={disabled}
-      readOnly={readonly}
-      autoComplete={autocomplete}
-      autoFocus={autofocus}
+      readOnly={readOnly}
+      autoComplete={autoComplete}
       required={required}
       pattern={pattern}
       min={min}
       max={max}
       step={step}
-      className={`text-field ${className}`}
-      style={style}
     />
   );
 };

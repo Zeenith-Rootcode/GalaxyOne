@@ -1,4 +1,4 @@
-import { addPlanet, getPlanets, getPopularPlanets } from "../api/planets";
+import { addPlanet, getPlanets, getPopularPlanets,getRecentPlanets } from "../api/planets";
 import { Planet, PlanetUpload } from "../types/planetTypes";
 
 export async function GetPlanets() {
@@ -13,6 +13,15 @@ export async function GetPlanets() {
 export async function GetPopularPlanets() {
   try {
     const response = await getPopularPlanets();
+    console.log("Response:", response);
+  } catch (error) {
+    console.error("An error occurred in retrieving planets:", error);
+  }
+}
+
+export async function GetRecentPlanets(userId:string) {
+  try {
+    const response = await getRecentPlanets(userId);
     console.log("Response:", response);
   } catch (error) {
     console.error("An error occurred in retrieving planets:", error);

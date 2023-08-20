@@ -5,9 +5,11 @@ import {
   getPlanetsResponse,
 } from "../types/planetTypes";
 
+const BASEURL = process.env.REACT_APP_BASE_URL
+
 export async function getPlanets() {
   try {
-    const response = await fetch("/api/planets/getPlanetsDetails", {
+    const response = await fetch(BASEURL+"/api/planets/getPlanetsDetails", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -32,7 +34,7 @@ export async function getPlanets() {
 
 export async function getPopularPlanets() {
   try {
-    const response = await fetch("/api/planets/getPopularPlanets", {
+    const response = await fetch(BASEURL+"/api/planets/getPopularPlanets", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -55,6 +57,35 @@ export async function getPopularPlanets() {
   }
 }
 
+export async function getRecentPlanets(userId: string) {
+  try {
+    let response;
+    response = await fetch(BASEURL+"/api/bookings/getRecentPlanetsOfUser", {
+      method: "POST",
+      body: JSON.stringify({
+        "user":userId
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
+    const result = (await response.json()) as getPlanetsResponse;
+    return result;
+  } catch (error) {
+    if (error instanceof Error) {
+      return error.message;
+    } else {
+      return "An unexpected error occurred";
+    }
+  }
+}
+
+
 export async function addPlanet(planet: PlanetUpload) {
   try {
     const formData = new FormData();
@@ -70,7 +101,7 @@ export async function addPlanet(planet: PlanetUpload) {
       formData.append("availablePackages", planet.availablePackages[i]);
     }
 
-    const response = await fetch("/api/planets/addPlanet", {
+    const response = await fetch(BASEURL+"/api/planets/addPlanet", {
       method: "POST",
       body: formData,
       headers: {
