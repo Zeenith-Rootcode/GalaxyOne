@@ -2,7 +2,7 @@ import React from 'react';
 import {CardProps} from './CardProps';
 
 export const exampleCardProps: CardProps = {
-    className: 'custom-card',
+    className: 'custom-PlanetCard',
     style: {
         border: '1px solid #ccc',
         borderRadius: '10px',
