@@ -36,3 +36,17 @@ export const exampleParagraphProps4: ParagraphProps = {
     dir: 'ltr',
     text: 'This paragraph has a larger font size and increased line height.',
 };
+
+type fontSize = 10 |20| 25;
+
+export function textSize(fontSize: fontSize, text: string){
+    const Your_Portal_to_the_Cosmos: ParagraphProps = {
+        id: 'intro-paragraph',
+        className: 'intro-paragraph',
+        style: { color: 'white', fontSize: fontSize, fontWeight:'bold'},
+        lang: 'en',
+        dir: 'ltr',
+        text: text,
+    };
+    return Your_Portal_to_the_Cosmos;
+}
