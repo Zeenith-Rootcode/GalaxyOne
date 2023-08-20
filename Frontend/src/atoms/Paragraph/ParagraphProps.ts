@@ -5,5 +5,5 @@ export class ParagraphProps {
     lang?: string = '';
     dir?: 'ltr' | 'rtl' = 'ltr';
     text: string = '';
-  }
+}
   

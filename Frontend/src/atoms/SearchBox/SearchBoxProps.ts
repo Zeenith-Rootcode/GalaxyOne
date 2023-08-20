@@ -4,11 +4,11 @@ export class SearchBoxProps {
     name?: string = '';
     value?: string = '';
     placeholder?: string = '';
-    maxlength?: number= 50;
+    maxlength?: number = 50;
     size?: number = 20;
     disabled?: boolean = false;
     readonly?: boolean = false;
     class?: string = '';
     style?: React.CSSProperties = {};
     hint?: string = '';
-  }
+}
