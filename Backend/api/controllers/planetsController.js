@@ -1,20 +1,76 @@
 const bcrypt = require("bcryptjs");
 const request = require("request-promise");
 const Planet = require("../models/planet");
+const Packages = require("../models/package");
 
 // *******************************************************************************
 // ****************************** To get planets *********************************
 // *******************************************************************************
+function getPackageDetails(package) {
+  return new Promise((resolve, reject) => {
+    Packages.findById(package)
+      .then((packageFromDB) => {
+        resolve(packageFromDB);
+      })
+      .catch((error) => {
+        res.json({
+          Error: true,
+          Status: 400,
+          Message: "Getting planets was failed",
+          Error: error,
+        });
+      });
+  });
+}
+function getPlanetDetails(planetFromDB) {
+  return new Promise((resolve, reject) => {
+    let availablePackages = planetFromDB.availablePackages;
+    Promise.all(
+      availablePackages.map((package) => {
+        return getPackageDetails(package);
+      })
+    )
+      .then((packageDetails) => {
+        resolve({
+          planetDetails: planetFromDB,
+          availablePackages: packageDetails,
+        });
+      })
+      .catch((error) => {
+        reject({
+          Error: true,
+          Status: 400,
+          Message: "Getting planets was failed",
+          Error: error,
+        });
+      });
+  });
+}
 
 exports.getPlanets = async (req, res) => {
   Planet.find()
     .then((planets) => {
-      res.json({
-        Error: false,
-        Status: 200,
-        Message: "Getting planets was succeeded",
-        Planets: planets,
-      });
+      Promise.all(
+        planets.map((planetFromDB) => {
+          return getPlanetDetails(planetFromDB);
+        })
+      )
+        .then((responseFromAllPlanets) => {
+          res.json({
+            Error: false,
+            Status: 200,
+            Message: "Getting planets was succeeded",
+            Planets: responseFromAllPlanets,
+          });
+        })
+        .catch((error) => {
+          res.json({
+            Error: true,
+            Status: 400,
+            Message: "Getting planets was failed",
+            Error: error,
+          });
+        });
     })
     .catch((error) => {
       res.json({
@@ -35,18 +91,33 @@ exports.getPopularPlanets = async (req, res) => {
     .sort({ reviewScore: -1 })
     .limit(10)
     .then((planets) => {
-      res.json({
-        Error: false,
-        Status: 200,
-        Message: "Getting popular planets was succeeded",
-        Planets: planets,
-      });
+      Promise.all(
+        planets.map((planetFromDB) => {
+          return getPlanetDetails(planetFromDB);
+        })
+      )
+        .then((responseFromAllPlanets) => {
+          res.json({
+            Error: false,
+            Status: 200,
+            Message: "Getting planets was succeeded",
+            Planets: responseFromAllPlanets,
+          });
+        })
+        .catch((error) => {
+          res.json({
+            Error: true,
+            Status: 400,
+            Message: "Getting planets was failed",
+            Error: error,
+          });
+        });
     })
     .catch((error) => {
       res.json({
         Error: true,
         Status: 400,
-        Message: "Getting popular planets was failed",
+        Message: "Getting planets was failed",
         Error: error,
       });
     });
