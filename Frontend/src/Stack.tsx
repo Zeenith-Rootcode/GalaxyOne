@@ -2,8 +2,10 @@ import React from "react";
 import "./Stack.css"; // Import your CSS file for styling
 import { LoginUser, RegisterUser } from "./hooks/user";
 import { loginType, userLogin, userRegister } from "./types/userTypes";
-import { AddPlanet, GetPlanets, GetPopularPlanets } from "./hooks/planets";
+import { AddPlanet, GetPlanets, GetPopularPlanets, GetRecentPlanets } from "./hooks/planets";
 import { Planet, PlanetUpload } from "./types/planetTypes";
+import {FilterTickets} from "./hooks/tickets";
+import {ticketFilterAttributes, Ticket} from "./types/ticketTypes";
 
 let testNormalRegister: userRegister = {
   fullName: "Chanuka Abeysinghe",
@@ -27,6 +29,7 @@ let testGoogleRegister: userRegister = {
   race: "Alient",
 };
 
+
 const handleUserRegister = (user: userRegister) => {
   RegisterUser(user);
 };
@@ -41,6 +44,8 @@ let testGoogleLogin: userLogin = {
   loginType: loginType.GOOGLE,
   googleId: "34324123",
 };
+
+let testGetRecentPlanets:string = "64defd1207759034c8a976f3"
 
 const handleUserLogin = (user: userLogin) => {
   LoginUser(user);
@@ -71,6 +76,10 @@ const handleGetPopularPlanets = () => {
   GetPopularPlanets();
 };
 
+const handleGetRecentPlanets = (userId:string) => {
+  GetRecentPlanets(userId);
+};
+
 const handleAddPlanet = async (planet: Planet) => {
   try {
     const blob = await fetch(planet.planetImage).then((response) =>
@@ -95,6 +104,18 @@ const handleAddPlanet = async (planet: Planet) => {
     console.error("Error creating and using the image file:", error);
   }
 };
+
+let testFilterTickets: ticketFilterAttributes = {
+  startingPlanet: "64e06242583bb603ee4baf81",
+  departureDate: "2023/10/11",
+  destinationPlanet: "64e06238583bb603ee4baf80",
+  packageId:"64df481d5e82dcf68fdfaed3"
+};
+
+const handleFilterTickets = (filterAttributes:ticketFilterAttributes) => {
+  FilterTickets(filterAttributes);
+};
+
 
 const Stack: React.FC = () => {
   return (
@@ -152,9 +173,28 @@ const Stack: React.FC = () => {
           <button
             type="submit"
             className="btn btn-secondary"
+            onClick={() => handleGetRecentPlanets(testGetRecentPlanets)}
+          >
+            Get Recent Planets
+          </button>
+          <button
+            type="submit"
+            className="btn btn-secondary"
             onClick={() => handleAddPlanet(testAddPlanet)}
           >
             Add Planet
+          </button>
+        </div>
+
+        <div className="component" style={{ margin: "20px" }}>
+          <h2>Tickets</h2>
+          {/*dont wrap api call button with a form element*/}
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => handleFilterTickets(testFilterTickets)}
+          >
+            Filter Tickets
           </button>
         </div>
       </div>
