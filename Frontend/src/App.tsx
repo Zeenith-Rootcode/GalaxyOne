@@ -1,77 +1,32 @@
-// import React from 'react';
-// import Button from './atoms/Button/Button'; // Update the path as needed
-// import { exampleButtonProps1, exampleButtonProps2, exampleButtonProps3 } from './atoms/Button/ExampleButtonProps'; // Update the path as needed
+import React from "react";
 
-// import Header from './atoms/Header/Header'; // Update the path as needed
-// import {exampleHeaderProps1, exampleHeaderProps2, exampleHeaderProps3} from './atoms/Header/ExampleHeaderProps'; // Update the path as needed
+import QRCode from "./assets/QR Code.svg";
+import Socket from "./assets/Socket.svg";
+import StarRating from "./assets/Star Rings.svg";
+import Button from "./atoms/Button/Button";
+import TextField from "./atoms/TextField/TextField";
+import ButtonHolder from "./modules/Layouts/ButtonLayout";
+import TextHolder from "./modules/Layouts/TextLayout";
 
-// import Paragraph from './atoms/Paragraph/Paragraph'; // Update the path as needed
-// import {exampleParagraphProps1, exampleParagraphProps2, exampleParagraphProps3, exampleParagraphProps4 } from './atoms/Paragraph/ExampleParagraphProps'; // Update the path as needed
-
-// import Image from './atoms/Image/Image'; // Update the path as needed
-// import {exampleImageProps1, exampleImageProps2, exampleImageProps3 } from './atoms/Image/ExampleImageProps'; // Update the path as needed
-
-// import TextField from './atoms/TextField/TextField'; // Update the path as needed
-// import {exampleTextFieldProps1, exampleTextFieldProps2, exampleTextFieldProps3} from './atoms/TextField/ExampleTextFieldProps'; // Update the path as needed
-
-// import SearchBox from './atoms/SearchBox/SearchBox'; // Update the path as needed
-// import {exampleSearchBoxProps} from './atoms/SearchBox/ExampleSearchBoxProps'; // Update the path as needed
-
-// import List from './atoms/List/List'; // Update the path as needed
-// import {exampleListProps} from './atoms/List/ExampleListProps'; // Update the path as needed
-
-// import Card from './atoms/Card/Card'; // Update the path as needed
-// import {exampleCardProps} from './atoms/Card/ExampleCardProps'; // Update the path as needed
-
-// // App.tsx
-// // import React from 'react';
-// import GridGenerator from './GridGen';
-// import planet_names from './data';
-// import './App.css'; // Import the CSS file for styling
-
-// function App() {
-//   return (
-//     <div className="App">
-//       {/* <Button {...exampleButtonProps1} /> */}
-//       {/* <Button {...exampleButtonProps2} /> */}
-//       {/* <Button {...exampleButtonProps3} /> */}
-//       {/* <Header {...exampleHeaderProps1} /> */}
-//       {/* <Header {...exampleHeaderProps2} /> */}
-//       {/* <Header {...exampleHeaderProps3} /> */}
-//       {/* <Paragraph {...exampleParagraphProps1} /> */}
-//       {/* <Paragraph {...exampleParagraphProps2} /> */}
-//       {/* <Paragraph {...exampleParagraphProps3} /> */}
-//       {/* <Paragraph {...exampleParagraphProps4} /> */}
-//       {/* <Image {...exampleImageProps1} /> */} 
-//       {/* <Image {...exampleImageProps2} /> */}
-//       {/* <Image {...exampleImageProps3} /> */}
-//       {/* <TextField {...exampleTextFieldProps1} /> */}
-//       {/* <TextField {...exampleTextFieldProps2} /> */}
-//       {/* <TextField {...exampleTextFieldProps3} /> */}
-//       {/* <SearchBox {...exampleSearchBoxProps} /> */}
-//       {/* <List {...exampleListProps} /> */}
-//       {/* <Card {...exampleCardProps} /> */}
-//       <GridGenerator planetNames={planet_names} />
-
-//     </div>
-//   );
-// }
-
-
-
-// export default App;
-
-
-
-import React from 'react';
-import Stack from './Stack';
-
-const App: React.FC = () => {
+export default function App() {
+  // const text = 'Click Me';
+  // const className = 'custom-button';
   return (
-    <div className="App">
-      <Stack />
+    <div>
+      <ButtonHolder pb={7} pt={7}>
+        <Button className={"custom-button"} icon={<img src={Socket} alt={""} />} />
+        <Button className={"custom-button"} icon={<img src={QRCode} alt={""} />} />
+        <Button className={"custom-button"} icon={<img src={StarRating} alt={""} />} />
+      </ButtonHolder>
+      <ButtonHolder pt={3}>
+        <Button text={"Sign In"} className={"custom-button"} />
+      </ButtonHolder>
+
+      <TextHolder>
+        <TextField type={"text"} placeholder={"Enter your email"} />
+        <TextField type={"text"} placeholder={"Enter your email"} />
+      </TextHolder>
+
     </div>
   );
 }
-
-export default App;

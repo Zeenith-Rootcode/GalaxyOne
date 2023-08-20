@@ -1,40 +1,36 @@
 import React from 'react';
 
-// Define the type for the 'type' prop of the Button component
 export type ButtonType = 'button' | 'submit' | 'reset';
 
-// Define the props interface for the Button component
 interface ButtonProps {
   text: string;
   className?: string;
-  type?: ButtonType; // Type of the button ('button', 'submit', 'reset')
-  onClick?: () => void; // Click event handler
-  disabled?: boolean; // Disable the button
-  icon?: React.ReactNode; // Icon element
-  conditionalRender?: boolean; // Conditionally render the button
-  styles?: React.CSSProperties; // Inline styles
+  type?: ButtonType;
+  onClick?: () => void;
+  disabled?: boolean;
+  icon?: React.ReactNode;
+  conditionalRender?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  text,
+  text = '',
   className = '',
   type = 'button',
   onClick,
-  disabled = false,
+  disabled = false, // Default to false
   icon,
-  conditionalRender = true,
-  styles,
+  conditionalRender = true, // Default to true
 }) => {
   return conditionalRender ? (
     <button
-      className={`button ${className}`}
+      // width to parent width
+      className="${className} flex h-16 w-full items-center justify-center gap-2.5 rounded-[14px] bg-green-500 px-5 py-3.5 text-center text-2xl font-extrabold leading-[13px] tracking-tight text-white shadow"
       type={type}
       onClick={onClick}
       disabled={disabled}
-      style={styles}
     >
-      {icon && <span className="icon">{icon}</span>}
-      {text}
+      {icon && <span>{icon}</span>}
+      {text && <span>{text}</span>}
     </button>
   ) : null;
 };
