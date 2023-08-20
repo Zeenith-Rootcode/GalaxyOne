@@ -1,5 +1,5 @@
 import { loginUser, registerUser } from "../api/user";
-import { userLogin, userRegister } from "../types";
+import { userLogin, userRegister } from "../types/userTypes";
 
 export async function RegisterUser(user: userRegister) {
   try {
