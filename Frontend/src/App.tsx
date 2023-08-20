@@ -58,9 +58,6 @@ export default function App() {
           <div className="Planet00 w-28 h-28 left-[-15px] top-[-43px] absolute shadow" />
         </div>
       </div>
-
-      sdds
-
     </div>
   );
 }

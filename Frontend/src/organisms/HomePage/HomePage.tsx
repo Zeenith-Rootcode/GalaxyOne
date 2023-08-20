@@ -19,7 +19,7 @@ const centerStyle: React.CSSProperties = {
   const HomePage: React.FC = () => {
     return (
       <div style={centerStyle}>
-        <Image {...imageProvider('https://picsum.photos/2000/2000?random=1')} />
+        <Image {...imageProvider(process.env.PUBLIC_URL + '/images/Home_Page.png')} />
         <Paragraph {...textSize(20, "GalaxyOne")}/>
         <Paragraph {...textSize(10, "Your Portal to the Cosmos")}/>
         <Button {...exampleButtonProps} text="Go Now" />
@@ -32,3 +32,5 @@ const centerStyle: React.CSSProperties = {
   };
   
   export default HomePage;
+
+
