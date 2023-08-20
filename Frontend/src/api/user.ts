@@ -1,9 +1,9 @@
-import { userLogin, userRegister, userResponse } from "../types";
+import { userLogin, userRegister, userResponse } from "../types/userTypes";
 
 export async function registerUser(user: userRegister) {
   try {
     let response;
-    if (user.loginType == "NORMAL") {
+    if (user.loginType === "NORMAL") {
       response = await fetch("/api/users/registerUser", {
         method: "POST",
         body: JSON.stringify({

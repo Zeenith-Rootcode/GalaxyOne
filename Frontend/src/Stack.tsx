@@ -1,7 +1,9 @@
 import React from "react";
 import "./Stack.css"; // Import your CSS file for styling
 import { LoginUser, RegisterUser } from "./hooks/user";
-import { loginType, userLogin, userRegister } from "./types";
+import { loginType, userLogin, userRegister } from "./types/userTypes";
+import { AddPlanet, GetPlanets, GetPopularPlanets } from "./hooks/planets";
+import { Planet, PlanetUpload } from "./types/planetTypes";
 
 let testNormalRegister: userRegister = {
   fullName: "Chanuka Abeysinghe",
@@ -44,6 +46,56 @@ const handleUserLogin = (user: userLogin) => {
   LoginUser(user);
 };
 
+const imageServerURL =
+  "https://upload.wikimedia.org/wikipedia/commons/c/cb/The_Blue_Marble_%28remastered%29.jpg";
+
+let testAddPlanet: Planet = {
+  name: "Earth",
+  climate: "Varied, from arid deserts to icy tundras.",
+  attractions: "Unity Plaza, Global Cultural Bazaar, Eclipsar Mountain Range.",
+  culture: "Diverse and multicultural, celebrating unity in diversity.",
+  attractionsDescription:
+    "Unity Plaza, Global Cultural Bazaar, Eclipsar Mountain Range.",
+  cultureDescription:
+    "Diverse and multicultural, celebrating unity in diversity.",
+  planetImage: imageServerURL,
+  distanceFromPlanet: 3333,
+  availablePackages: ["64df481d5e82dcf68fdfaed3", "64df481d5e82dcf68fdfaed4"],
+};
+
+const handleGetPlanets = () => {
+  GetPlanets();
+};
+
+const handleGetPopularPlanets = () => {
+  GetPopularPlanets();
+};
+
+const handleAddPlanet = async (planet: Planet) => {
+  try {
+    const blob = await fetch(planet.planetImage).then((response) =>
+      response.blob()
+    );
+    const planetImageFile = new File([blob], "planetImage.jpg");
+
+    const testAddPlanet: PlanetUpload = {
+      name: planet.name,
+      climate: planet.climate,
+      attractions: planet.attractions,
+      culture: planet.culture,
+      attractionsDescription: planet.attractionsDescription,
+      cultureDescription: planet.cultureDescription,
+      planetImage: planetImageFile,
+      distanceFromPlanet: planet.distanceFromPlanet,
+      availablePackages: planet.availablePackages,
+    };
+
+    AddPlanet(testAddPlanet);
+  } catch (error) {
+    console.error("Error creating and using the image file:", error);
+  }
+};
+
 const Stack: React.FC = () => {
   return (
     <div className="stack-container">
@@ -82,16 +134,28 @@ const Stack: React.FC = () => {
           </button>
         </div>
         <div className="component" style={{ margin: "20px" }}>
-          <h2>About Us</h2>
-          <p>Lorem text</p>
-        </div>
-        <div className="component" style={{ margin: "20px" }}>
-          <h2>Services</h2>
-          <ul>
-            <li>element 1</li>
-            <li>element 2</li>
-            <li>element 3</li>
-          </ul>
+          <h2>Planets</h2>
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => handleGetPlanets()}
+          >
+            Get Planets
+          </button>
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => handleGetPopularPlanets()}
+          >
+            Get Popular Planets
+          </button>
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => handleAddPlanet(testAddPlanet)}
+          >
+            Add Planet
+          </button>
         </div>
       </div>
     </div>
