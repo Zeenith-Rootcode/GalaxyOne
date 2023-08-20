@@ -5,9 +5,11 @@ import {
   getPlanetsResponse,
 } from "../types/planetTypes";
 
+const BASEURL = process.env.REACT_APP_BASE_URL
+
 export async function getPlanets() {
   try {
-    const response = await fetch("/api/planets/getPlanetsDetails", {
+    const response = await fetch(BASEURL+"/api/planets/getPlanetsDetails", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -32,7 +34,7 @@ export async function getPlanets() {
 
 export async function getPopularPlanets() {
   try {
-    const response = await fetch("/api/planets/getPopularPlanets", {
+    const response = await fetch(BASEURL+"/api/planets/getPopularPlanets", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -70,7 +72,7 @@ export async function addPlanet(planet: PlanetUpload) {
       formData.append("availablePackages", planet.availablePackages[i]);
     }
 
-    const response = await fetch("/api/planets/addPlanet", {
+    const response = await fetch(BASEURL+"/api/planets/addPlanet", {
       method: "POST",
       body: formData,
       headers: {

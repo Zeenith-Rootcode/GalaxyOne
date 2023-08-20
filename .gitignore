@@ -23,3 +23,6 @@ TestResults.xml
 /Backend/package-lock.json
 /Backend/node_modules
 Backend/uploads/
+.DS_Store
+Backend/.DS_Store
+Frontend/package-lock.json

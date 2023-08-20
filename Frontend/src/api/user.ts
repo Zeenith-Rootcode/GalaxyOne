@@ -1,10 +1,12 @@
 import { userLogin, userRegister, userResponse } from "../types/userTypes";
 
+
+const BASEURL = process.env.REACT_APP_BASE_URL
 export async function registerUser(user: userRegister) {
   try {
     let response;
     if (user.loginType === "NORMAL") {
-      response = await fetch("/api/users/registerUser", {
+      response = await fetch(BASEURL+"/api/users/registerUser", {
         method: "POST",
         body: JSON.stringify({
           fullName: user.fullName,
@@ -18,11 +20,11 @@ export async function registerUser(user: userRegister) {
         }),
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
         },
       });
     } else {
-      response = await fetch("/api/users/registerUser", {
+      response = await fetch(BASEURL+"/api/users/registerUser", {
         method: "POST",
         body: JSON.stringify({
           fullName: user.fullName,
@@ -34,9 +36,10 @@ export async function registerUser(user: userRegister) {
           homeDestrict: user.homeDestrict,
           race: user.race,
         }),
+        credentials: 'include',
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
         },
       });
     }
@@ -60,7 +63,7 @@ export async function loginUser(user: userLogin) {
   try {
     let response;
     if (user.loginType === "NORMAL") {
-      response = await fetch("/api/users/loginUser", {
+      response = await fetch(BASEURL+"api/users/loginUser", {
         method: "POST",
         body: JSON.stringify({
           loginType: user.loginType,
@@ -69,11 +72,11 @@ export async function loginUser(user: userLogin) {
         }),
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
         },
       });
     } else {
-      response = await fetch("/api/users/loginUser", {
+      response = await fetch(BASEURL+"/api/users/loginUser", {
         method: "POST",
         body: JSON.stringify({
           loginType: user.loginType,
@@ -81,7 +84,7 @@ export async function loginUser(user: userLogin) {
         }),
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
         },
       });
     }
