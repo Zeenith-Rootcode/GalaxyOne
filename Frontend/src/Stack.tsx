@@ -50,11 +50,8 @@ const Stack: React.FC = () => {
       <div className="background-image"></div>
       <div className="component-stack">
         <div className="component" style={{ margin: "20px" }}>
-          <h2>Contact Us</h2>
+          <h2>User</h2>
           {/*dont wrap api call button with a form element*/}
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
           <button
             type="submit"
             className="btn btn-secondary"
