@@ -1,5 +1,31 @@
 import {ButtonProps} from './ButtonProps';
 
+
+export const exampleButtonProps: ButtonProps = {
+    text: 'Click Me',
+    className: 'custom-button',
+    type: 'button',
+    onClick: () => {
+        console.log('Button clicked');
+    },
+    disabled: false,
+    conditionalRender: true,
+    styles: {
+        display: 'inline-block',
+        padding: '10px 20px',
+        margin: '10px 20px',
+        border: 'none',
+        borderRadius: '10px',
+        backgroundColor: '#4caf50',
+        color: 'white',
+        fontWeight: 'bold',
+        cursor: 'pointer',
+        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
+        transition: 'background-color 0.2s, transform 0.2s',
+        userSelect: 'none',
+    },
+};
+
 export const exampleButtonProps1: ButtonProps = {
     text: 'Click Me',
     className: 'custom-button',
