@@ -1,6 +1,6 @@
 import { ButtonProps } from './ButtonProps';
 
-export const exampleButtonProps1: ButtonProps = {
+export const exampleButtonProps: ButtonProps = {
   text: 'Click Me',
   className: 'custom-button',
   type: 'button',
@@ -12,6 +12,7 @@ export const exampleButtonProps1: ButtonProps = {
   styles: {
     display: 'inline-block',
     padding: '10px 20px',
+    margin: '10px 20px',
     border: 'none',
     borderRadius: '10px',
     backgroundColor: '#4caf50',

@@ -65,11 +65,15 @@
 
 import React from 'react';
 import Stack from './Stack';
+import HomePage from './organisms/HomePage/HomePage';
+import WelcomePage from './organisms/WelcomePage/WelcomePage';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Stack />
+      {/* <Stack /> */}
+      {/* <HomePage/> */}
+      {/* <WelcomePage/> */}
     </div>
   );
 }
