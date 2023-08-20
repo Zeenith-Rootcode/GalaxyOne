@@ -10,6 +10,7 @@ const userRouter = require("./api/routes/userRoutes");
 const planetRouter = require("./api/routes/planetRautes");
 const packageRouter = require("./api/routes/packagesRoutes");
 const ticketsRouter = require("./api/routes/ticketsRoutes");
+const bookingsRouter = require("./api/routes/bookingsRoutes");
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use("/api/users", userRouter);
 app.use("/api/planets", planetRouter);
 app.use("/api/packages", packageRouter);
 app.use("/api/tickets", ticketsRouter);
+app.use("/api/bookings", bookingsRouter);
 
 // Define port variable
 const port = process.env.PORT || 8080;
